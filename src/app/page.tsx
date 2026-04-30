@@ -10,6 +10,7 @@ import MemoryGallery from '@/components/MemoryGallery';
 import LettersSection from '@/components/LettersSection';
 import FireworksFinale from '@/components/FireworksFinale';
 import IkaGlobe from '@/components/IkaGlobe';
+import FlowerBouquet from '@/components/FlowerBouquet';
 
 import Preloader from '@/components/Preloader';
 
@@ -17,13 +18,25 @@ import Preloader from '@/components/Preloader';
 export default function Home() {
   const narrativeRef = useRef<HTMLDivElement>(null);
   const [showIkaGlobe, setShowIkaGlobe] = useState(false);
+  const [showBouquet, setShowBouquet] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [showHeart, setShowHeart] = useState(false);
 
   useEffect(() => {
     // Force scroll to top on reload to start with iPod
     window.scrollTo(0, 0);
     // Also handle cases where browser tries to restore scroll
     setTimeout(() => window.scrollTo(0, 0), 10);
+  }, []);
+
+  useEffect(() => {
+    const startHeart = () => {
+      // Direct transition to bouquet as requested
+      setShowBouquet(true);
+      document.body.style.overflow = 'hidden';
+    };
+    window.addEventListener('heart:start', startHeart);
+    return () => window.removeEventListener('heart:start', startHeart);
   }, []);
 
   const handleProceed = () => {
@@ -45,6 +58,28 @@ export default function Home() {
       <AnimatePresence>
         {!isReady && (
           <Preloader key="preloader" onComplete={() => setIsReady(true)} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showHeart && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 9999,
+              background: 'rgba(0,0,0,0.85)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'none'
+            }}
+          >
+            <HeartAnimation />
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -136,6 +171,15 @@ export default function Home() {
           ) : (
             <IkaGlobe key="ika-globe-view" onClose={handleCloseGlobe} />
           )}
+
+          <AnimatePresence>
+            {showBouquet && (
+              <FlowerBouquet key="flower-bouquet-view" onClose={() => {
+                setShowBouquet(false);
+                document.body.style.overflow = '';
+              }} />
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </main>

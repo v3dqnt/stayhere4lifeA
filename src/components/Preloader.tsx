@@ -11,12 +11,20 @@ const ASSETS = [
   '/The%20Weeknd%20-%20Wicked%20Games%20(Official%20Video%20-%20Explicit).mp3',
   '/Harry%20Styles%20-%20Sign%20of%20the%20Times%20(Official%20Video).mp3',
   "/Don't%20Let%20Me%20Go%20-%20Cigarettes%20After%20Sex.mp3",
+  '/Passionfruit.mp3',
   
   // Images (Covers)
   '/Anna%20Karenina%20Cover.png',
   "/hold%20on%20we're%20going%20home%20cover.jpg",
   '/a&w.png',
   '/Wicked%20Games.jpg',
+  '/Passionfruit.png',
+  '/rose.png',
+  '/lily.png',
+  '/tulip.png',
+  '/lavender.png',
+  '/leaf.png',
+  '/wrap.png',
   
   // Images (Memories)
   '/aaliya.png',

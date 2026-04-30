@@ -1162,7 +1162,8 @@ export default function IkaGlobe({ onClose, autoPlay = true }: IkaGlobeProps) {
         }}>
           <p style={{
             fontFamily:'var(--serif)', fontStyle:'italic',
-            color:'rgba(255,255,255,0.2)', fontSize:'0.76rem', letterSpacing:'0.04em',
+            color:'rgba(255,255,255,0.55)', fontSize:'0.85rem', letterSpacing:'0.06em',
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)'
           }}>
             spin it around
           </p>

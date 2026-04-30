@@ -12,6 +12,7 @@ const SONGS = [
   { id: 5, title: "Hold On We're Going Home", artist: 'Drake', labelColor: '#bae6fd', accent: '#451a03', file: "/Hold On, We're Going Home (feat. Majid Jordan).mp3", cover: "/hold on we're going home cover.jpg" },
   { id: 6, title: "A&W", artist: "Lana Del Rey", labelColor: "#4a4a4a", accent: "#ffffff", file: "/Lana Del Rey - A&W (Audio).mp3", cover: "/a&w.png" },
   { id: 7, title: "Wicked Games", artist: "The Weeknd", labelColor: "#d2042d", accent: "#ffffff", file: "/The Weeknd - Wicked Games (Official Video - Explicit).mp3", cover: "/Wicked Games.jpg" },
+  { id: 8, title: "Passionfruit", artist: "Drake", labelColor: "#3d2b1f", accent: "#d4a373", file: "/Passionfruit.mp3", cover: "/Passionfruit.png" },
 ];
 
 interface MusicSelectorProps {
@@ -94,9 +95,14 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
         push('success', 'Theme: A&W unlocked ✦');
         break;
       case 'HOLDON':
-        document.documentElement.classList.remove('dark-mograph', 'theme-aw');
+        document.documentElement.classList.remove('dark-mograph', 'theme-aw', 'theme-wicked', 'theme-passionfruit');
         document.documentElement.classList.add('theme-holdon');
         push('success', 'Theme: HOLD ON unlocked ✦');
+        break;
+      case 'PASSIONFRUIT':
+        document.documentElement.classList.remove('dark-mograph', 'theme-aw', 'theme-wicked', 'theme-holdon');
+        document.documentElement.classList.add('theme-passionfruit');
+        push('success', 'Theme: PASSIONFRUIT unlocked ✦');
         break;
       case 'FIREWORKS':
         push('success', 'Launching finale...');
@@ -121,8 +127,13 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
         break;
       case '#LOVE':
       case 'LOVE':
-        push('success', 'love is: remembering your coffee order');
-        push('success', 'and hoping your day is soft 🤍');
+        push('success', 'scanning for heartbeats...');
+        push('success', 'frequency matched. ♡');
+        push('output', 'gathering a few things for her...');
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent('heart:start'));
+          setShowTerminal(false);
+        }, 800);
         break;
       case 'UNLOCK':
         push('success', '⚡ All themes unlocked.');
@@ -196,7 +207,7 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
       }
 
       // Theme toggle
-      document.documentElement.classList.remove('dark-mograph', 'theme-holdon', 'theme-aw', 'theme-wicked');
+      document.documentElement.classList.remove('dark-mograph', 'theme-holdon', 'theme-aw', 'theme-wicked', 'theme-passionfruit');
       if (song.id === 0) {
         document.documentElement.classList.add('dark-mograph');
       } else if (song.id === 5) {
@@ -205,6 +216,8 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
         document.documentElement.classList.add('theme-aw');
       } else if (song.id === 7) {
         document.documentElement.classList.add('theme-wicked');
+      } else if (song.id === 8) {
+        document.documentElement.classList.add('theme-passionfruit');
       }
 
       audioRef.current = audio;
