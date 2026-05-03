@@ -5,10 +5,6 @@ import anime from 'animejs';
 
 const SONGS = [
   { id: 0, title: 'Anna Karenina', artist: 'Cigarettes After Sex',        labelColor: '#8aadcc', accent: '#b8d4e8', file: '/Anna%20Karenina.mp3', cover: '/Anna%20Karenina%20Cover.png' },
-  { id: 1, title: 'From The Start', artist: 'Laufey',              labelColor: '#c9a0b4', accent: '#e8c4d8' },
-  { id: 2, title: 'Golden',         artist: 'Harry Styles',        labelColor: '#c4a85a', accent: '#e8d4a0' },
-  { id: 3, title: 'Die For You',    artist: 'The Weeknd',          labelColor: '#9a7acc', accent: '#c4b0e8' },
-  { id: 4, title: 'Sunflower',      artist: 'Post Malone',         labelColor: '#7aac8a', accent: '#b0d4bc' },
   { id: 5, title: "Hold On We're Going Home", artist: 'Drake', labelColor: '#bae6fd', accent: '#451a03', file: "/Hold On, We're Going Home (feat. Majid Jordan).mp3", cover: "/hold on we're going home cover.jpg" },
   { id: 6, title: "A&W", artist: "Lana Del Rey", labelColor: "#4a4a4a", accent: "#ffffff", file: "/Lana Del Rey - A&W (Audio).mp3", cover: "/a&w.png" },
   { id: 7, title: "Wicked Games", artist: "The Weeknd", labelColor: "#d2042d", accent: "#ffffff", file: "/The Weeknd - Wicked Games (Official Video - Explicit).mp3", cover: "/Wicked Games.jpg" },
