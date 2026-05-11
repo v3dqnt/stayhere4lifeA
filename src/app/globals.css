@@ -276,7 +276,7 @@ main {
   background-image: url('/ice-bg.png');
   background-size: cover;
   background-position: center;
-  filter: brightness(0.4) contrast(1.2) saturate(0.8) blue-tint; /* conceptual blue tint */
+  filter: brightness(0.4) contrast(1.2) saturate(0.8) blur(20px);
   transform: scale(1.1);
   animation: slow-pan 30s infinite alternate ease-in-out;
 }
@@ -352,11 +352,9 @@ main {
   gap: 2rem;
   max-width: 900px;
   margin: 0 auto 5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 4rem 0;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
 }
 
 .iceman-theme .time-block {
