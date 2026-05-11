@@ -9,7 +9,7 @@ const SONGS = [
   { id: 6, title: "A&W", artist: "Lana Del Rey", labelColor: "#4a4a4a", accent: "#ffffff", file: "/Lana Del Rey - A&W (Audio).mp3", cover: "/a&w.png" },
   { id: 7, title: "Wicked Games", artist: "The Weeknd", labelColor: "#d2042d", accent: "#ffffff", file: "/The Weeknd - Wicked Games (Official Video - Explicit).mp3", cover: "/Wicked Games.jpg" },
   { id: 8, title: "Passionfruit", artist: "Drake", labelColor: "#3d2b1f", accent: "#d4a373", file: "/Passionfruit.mp3", cover: "/Passionfruit.png" },
-  { id: 9, title: "What Did I Miss", artist: "Drake", labelColor: "#0e2a2e", accent: "#87d7e0", file: "/WHAT DID I MISS - EPISODE 1 CUT DOWN.mp3", cover: "/what did i miss.jpg" },
+  { id: 9, title: "What Did I Miss", artist: "Drake", labelColor: "#0e2a2e", accent: "#85d7e2", file: "/WHAT DID I MISS - EPISODE 1 CUT DOWN.mp3", cover: "/what did i miss.jpg" },
 ];
 
 interface MusicSelectorProps {

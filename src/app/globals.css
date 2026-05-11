@@ -108,21 +108,21 @@
 }
 
 .theme-iceman {
-  --background: #071a1e; /* Deep Frozen Dark */
-  --foreground: #e8f7f9; /* Icy White */
-  --accent: #87d7e0;    /* Iceman Cyan */
-  --accent-muted: rgba(135, 215, 224, 0.2);
-  --border: rgba(135, 215, 224, 0.25);
-  --glass: rgba(7, 26, 30, 0.7);
-  --card-bg: rgba(135, 215, 224, 0.05);
-  --card-shadow: 0 40px 120px rgba(135, 215, 224, 0.1);
-  --header-bg: rgba(135, 215, 224, 0.03);
+  --background: #85d7e2; /* Iceman Cyan */
+  --foreground: #071a1e; /* Deep Frozen Dark */
+  --accent: #071a1e;
+  --accent-muted: rgba(7, 26, 30, 0.2);
+  --border: rgba(7, 26, 30, 0.2);
+  --glass: rgba(133, 215, 226, 0.7);
+  --card-bg: rgba(7, 26, 30, 0.08);
+  --card-shadow: 0 40px 120px rgba(7, 26, 30, 0.15);
+  --header-bg: rgba(7, 26, 30, 0.05);
 
   /* iPod Themes */
-  --ipod-bg: linear-gradient(160deg, #0d2f35 0%, #071a1e 100%);
-  --ipod-wheel: linear-gradient(145deg, #0f3840 0%, #071a1e 50%, #0d2f35 100%);
-  --ipod-screen: #040f11;
-  --ipod-inner-border: rgba(135, 215, 224, 0.15);
+  --ipod-bg: linear-gradient(160deg, #9de2ec 0%, #6fcad6 100%);
+  --ipod-wheel: linear-gradient(145deg, #a8e8f0 0%, #6fcad6 50%, #9de2ec 100%);
+  --ipod-screen: #e8f9fb;
+  --ipod-inner-border: rgba(7, 26, 30, 0.15);
 }
 
 * {
