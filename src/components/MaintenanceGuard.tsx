@@ -68,6 +68,13 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
         }
       };
 
+      const handleKeyDown = (e: KeyboardEvent) => {
+        // Secret shortcut to bypass: Ctrl + Shift + U
+        if (e.ctrlKey && e.shiftKey && e.key === 'U') {
+          setIsLocked(false);
+        }
+      };
+
       // Try initial autoplay
       audioRef.current.play()
         .then(() => setIsPlaying(true))
@@ -77,9 +84,12 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
           window.addEventListener('touchstart', playAudio);
         });
 
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         window.removeEventListener('click', playAudio);
         window.removeEventListener('touchstart', playAudio);
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [mounted]);

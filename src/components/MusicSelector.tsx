@@ -9,6 +9,7 @@ const SONGS = [
   { id: 6, title: "A&W", artist: "Lana Del Rey", labelColor: "#4a4a4a", accent: "#ffffff", file: "/Lana Del Rey - A&W (Audio).mp3", cover: "/a&w.png" },
   { id: 7, title: "Wicked Games", artist: "The Weeknd", labelColor: "#d2042d", accent: "#ffffff", file: "/The Weeknd - Wicked Games (Official Video - Explicit).mp3", cover: "/Wicked Games.jpg" },
   { id: 8, title: "Passionfruit", artist: "Drake", labelColor: "#3d2b1f", accent: "#d4a373", file: "/Passionfruit.mp3", cover: "/Passionfruit.png" },
+  { id: 9, title: "What Did I Miss", artist: "Drake", labelColor: "#0a1628", accent: "#a5c7ff", file: "/WHAT DID I MISS - EPISODE 1 CUT DOWN.mp3", cover: "/what did i miss.jpg" },
 ];
 
 interface MusicSelectorProps {
@@ -203,7 +204,7 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
       }
 
       // Theme toggle
-      document.documentElement.classList.remove('dark-mograph', 'theme-holdon', 'theme-aw', 'theme-wicked', 'theme-passionfruit');
+      document.documentElement.classList.remove('dark-mograph', 'theme-holdon', 'theme-aw', 'theme-wicked', 'theme-passionfruit', 'theme-iceman');
       if (song.id === 0) {
         document.documentElement.classList.add('dark-mograph');
       } else if (song.id === 5) {
@@ -214,6 +215,8 @@ export default function MusicSelector({ onProceed, onIkaGlobe }: MusicSelectorPr
         document.documentElement.classList.add('theme-wicked');
       } else if (song.id === 8) {
         document.documentElement.classList.add('theme-passionfruit');
+      } else if (song.id === 9) {
+        document.documentElement.classList.add('theme-iceman');
       }
 
       audioRef.current = audio;

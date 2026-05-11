@@ -262,16 +262,37 @@ export default function MemoryGallery() {
     return () => ctx.revert();
   }, [stickers]);
 
+  const [isIceman, setIsIceman] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsIceman(document.documentElement.classList.contains('theme-iceman'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="memory-gallery-container">
       <section 
         ref={containerRef} 
         className="memory-gallery-root"
         style={{ 
-          height: '100vh', width: '100vw', background: 'var(--background)',
+          height: '100vh', width: '100vw',
+          background: isIceman ? 'transparent' : 'var(--background)',
           overflow: 'hidden', position: 'relative'
         }}
       >
+        {/* ICEMAN ice background */}
+        {isIceman && (
+          <div style={{
+            position: 'absolute', inset: 0, zIndex: 0,
+            backgroundImage: "url('/ice-bg.png')",
+            backgroundSize: 'cover', backgroundPosition: 'center',
+            filter: 'brightness(0.35) saturate(0.7) contrast(1.1)',
+            transition: 'opacity 1s ease',
+          }} />
+        )}
         {mounted && (
           <div ref={cameraRef} style={{ width: '100%', height: '100%', position: 'relative', transformOrigin: 'center center' }}>
             
@@ -487,21 +508,43 @@ export default function MemoryGallery() {
 
               <div className="frame-media" style={{
                 width: mem.width, aspectRatio: mem.aspect,
-                background: 'var(--card-bg)', 
-                borderRadius: '16px', zIndex: 5,
-                boxShadow: 'var(--card-shadow)',
-                overflow: 'hidden', border: '1px solid var(--border)',
+                background: isIceman ? 'rgba(10, 22, 40, 0.7)' : 'var(--card-bg)', 
+                borderRadius: isIceman ? '4px' : '16px', zIndex: 5,
+                boxShadow: isIceman
+                  ? '0 0 40px rgba(165,199,255,0.15), inset 0 0 20px rgba(165,199,255,0.05)'
+                  : 'var(--card-shadow)',
+                overflow: 'hidden', 
+                border: isIceman ? '1px solid rgba(165,199,255,0.2)' : '1px solid var(--border)',
                 position: 'relative',
-                transition: 'background 0.8s ease, box-shadow 0.8s ease'
+                backdropFilter: isIceman ? 'blur(2px)' : 'none',
+                transition: 'all 0.8s ease'
               }}>
+                {/* Frame header — macOS dots OR ice top bar */}
                 <div style={{
-                  height: '34px', background: 'var(--header-bg)', display: 'flex', alignItems: 'center', padding: '0 12px', gap: '8px',
+                  height: '34px',
+                  background: isIceman
+                    ? 'linear-gradient(180deg, rgba(165,199,255,0.15) 0%, transparent 100%)'
+                    : 'var(--header-bg)',
+                  display: 'flex', alignItems: 'center', padding: '0 12px', gap: '8px',
                   position: 'absolute', top: 0, left: 0, width: '100%', zIndex: 2,
+                  borderBottom: isIceman ? '1px solid rgba(165,199,255,0.2)' : 'none',
                   transition: 'background 0.8s ease'
                 }}>
-                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }} />
-                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }} />
-                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
+                  {isIceman ? (
+                    // Ice-style: crystalline dots
+                    <>
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'rgba(165,199,255,0.4)', boxShadow: '0 0 6px rgba(165,199,255,0.6)' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'rgba(165,199,255,0.25)', boxShadow: '0 0 4px rgba(165,199,255,0.4)' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'rgba(165,199,255,0.15)', boxShadow: '0 0 3px rgba(165,199,255,0.3)' }} />
+                    </>
+                  ) : (
+                    // Default macOS-style dots
+                    <>
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }} />
+                      <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
+                    </>
+                  )}
                 </div>
                 <div style={{ padding: '44px 10px 10px 10px', height: '100%' }}>
                   <div style={{ 
@@ -549,20 +592,39 @@ export default function MemoryGallery() {
                         }}
                       />
                     )}
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%)' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: isIceman ? 'linear-gradient(135deg, rgba(165,199,255,0.03) 0%, transparent 50%)' : 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%)' }} />
                   </div>
                 </div>
               </div>
 
+              {/* Ice frame overlay — shown in iceman theme */}
+              {isIceman && (
+                <div style={{
+                  position: 'absolute', inset: '-8%',
+                  backgroundImage: "url('/ice-frame.png')",
+                  backgroundSize: '100% 100%',
+                  backgroundRepeat: 'no-repeat',
+                  pointerEvents: 'none',
+                  zIndex: 20,
+                  filter: 'drop-shadow(0 0 20px rgba(165,199,255,0.4))',
+                  mixBlendMode: 'screen',
+                }} />
+              )}
+
               <div className="frame-content" style={{
                 position: 'absolute', right: '5%', top: '60%',
-                width: '280px', background: 'var(--card-bg)', padding: '2rem',
-                borderRadius: '4px', boxShadow: 'var(--card-shadow)',
-                zIndex: 10, border: '1px solid var(--border)',
-                transition: 'background 0.8s ease'
+                width: '280px',
+                background: isIceman ? 'rgba(10,22,40,0.8)' : 'var(--card-bg)',
+                padding: '2rem',
+                borderRadius: '4px',
+                boxShadow: isIceman ? '0 0 30px rgba(165,199,255,0.1)' : 'var(--card-shadow)',
+                zIndex: 10,
+                border: isIceman ? '1px solid rgba(165,199,255,0.2)' : '1px solid var(--border)',
+                backdropFilter: isIceman ? 'blur(10px)' : 'none',
+                transition: 'all 0.8s ease'
               }}>
-                <h3 style={{ fontSize: '0.65rem', letterSpacing: '0.4rem', color: 'var(--accent)', marginBottom: '1.2rem', fontWeight: 800, transition: 'color 0.8s ease' }}>{mem.title}</h3>
-                <p style={{ fontFamily: 'var(--serif)', fontSize: '1.1rem', color: 'var(--foreground)', lineHeight: 1.6, transition: 'color 0.8s ease' }}>{mem.story}</p>
+                <h3 style={{ fontSize: '0.65rem', letterSpacing: '0.4rem', color: isIceman ? '#a5c7ff' : 'var(--accent)', marginBottom: '1.2rem', fontWeight: 800, transition: 'color 0.8s ease' }}>{mem.title}</h3>
+                <p style={{ fontFamily: 'var(--serif)', fontSize: '1.1rem', color: isIceman ? 'rgba(255,255,255,0.85)' : 'var(--foreground)', lineHeight: 1.6, transition: 'color 0.8s ease' }}>{mem.story}</p>
               </div>
             </div>
           ))}

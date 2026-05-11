@@ -107,6 +107,24 @@
   --ipod-inner-border: rgba(255, 255, 255, 0.1);
 }
 
+.theme-iceman {
+  --background: #040d1a; /* Deep Arctic Night */
+  --foreground: #e8f1ff; /* Cold White */
+  --accent: #a5c7ff;    /* Ice Blue */
+  --accent-muted: rgba(165, 199, 255, 0.15);
+  --border: rgba(165, 199, 255, 0.2);
+  --card-bg: rgba(10, 22, 40, 0.8);
+  --card-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(165, 199, 255, 0.05);
+  --header-bg: rgba(165, 199, 255, 0.08);
+  --glass: rgba(10, 22, 40, 0.7);
+
+  /* iPod Themes */
+  --ipod-bg: linear-gradient(160deg, #0a1628 0%, #040d1a 100%);
+  --ipod-wheel: linear-gradient(145deg, #0d1f35 0%, #040d1a 50%, #0a1628 100%);
+  --ipod-screen: #020810;
+  --ipod-inner-border: rgba(165, 199, 255, 0.15);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
