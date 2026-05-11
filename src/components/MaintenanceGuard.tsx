@@ -55,13 +55,14 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
   if (!isLocked) return <>{children}</>;
 
   return (
-    <div className="maintenance-container">
+    <div className="maintenance-container iceman-theme">
       <div className="ice-background" />
-      <div className="overlay" />
+      <div className="static-overlay" />
+      <div className="vignette" />
       
       <div className="content">
-        <p className="sub-title">The Sanctuary is currently</p>
-        <h1 className="title">Frozen in Time</h1>
+        <p className="sub-title">OVO SOUND PRESENTS</p>
+        <h1 className="title">ICEMAN</h1>
         
         <div className="countdown">
           <div className="time-block">
@@ -82,7 +83,10 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
           </div>
         </div>
         
-        <p className="footer-text">Thawing on May 16th, 12:00 AM</p>
+        <div className="broadcast-info">
+          <p className="footer-text">CHAPTER 01: THE THAW</p>
+          <p className="date-info">MAY 16, 2026 / 00:00:00 EST</p>
+        </div>
       </div>
     </div>
   );
