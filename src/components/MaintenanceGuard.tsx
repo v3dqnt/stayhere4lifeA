@@ -7,6 +7,7 @@ const TARGET_DATE = new Date('2026-05-16T00:00:00');
 export default function MaintenanceGuard({ children }: { children: React.ReactNode }) {
   const [isLocked, setIsLocked] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   
   const [timeLeft, setTimeLeft] = useState({
@@ -55,9 +56,31 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
 
   useEffect(() => {
     if (mounted && audioRef.current) {
-      audioRef.current.play().catch(e => {
-        console.warn("Autoplay blocked by browser. User interaction required.", e);
-      });
+      const playAudio = () => {
+        if (audioRef.current) {
+          audioRef.current.play()
+            .then(() => {
+              setIsPlaying(true);
+              window.removeEventListener('click', playAudio);
+              window.removeEventListener('touchstart', playAudio);
+            })
+            .catch(e => console.error("Interaction play failed", e));
+        }
+      };
+
+      // Try initial autoplay
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          // If blocked, wait for interaction
+          window.addEventListener('click', playAudio);
+          window.addEventListener('touchstart', playAudio);
+        });
+
+      return () => {
+        window.removeEventListener('click', playAudio);
+        window.removeEventListener('touchstart', playAudio);
+      };
     }
   }, [mounted]);
 
@@ -99,6 +122,12 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
           <p className="footer-text">CHAPTER 01: THE THAW</p>
           <p className="date-info">MAY 16, 2026 / 00:00:00 EST</p>
         </div>
+
+        {!isPlaying && (
+          <div className="audio-prompt">
+            <span className="prompt-text">TAP ANYWHERE TO LISTEN</span>
+          </div>
+        )}
       </div>
     </div>
   );
