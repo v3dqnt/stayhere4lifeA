@@ -62,7 +62,7 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
       
       <div className="content">
         <p className="sub-title">OVO SOUND PRESENTS</p>
-        <h1 className="title">ICEMAN</h1>
+        <h1 className="title">AALIYA X ICEMAN</h1>
         
         <div className="countdown">
           <div className="time-block">
