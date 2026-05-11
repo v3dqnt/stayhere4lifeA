@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const TARGET_DATE = new Date('2026-05-16T00:00:00');
 
 export default function MaintenanceGuard({ children }: { children: React.ReactNode }) {
   const [isLocked, setIsLocked] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -51,6 +53,14 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
     }
   }, []);
 
+  useEffect(() => {
+    if (mounted && audioRef.current) {
+      audioRef.current.play().catch(e => {
+        console.warn("Autoplay blocked by browser. User interaction required.", e);
+      });
+    }
+  }, [mounted]);
+
   if (!mounted) return null; // Avoid hydration mismatch
   if (!isLocked) return <>{children}</>;
 
@@ -59,7 +69,9 @@ export default function MaintenanceGuard({ children }: { children: React.ReactNo
       <div className="ice-background" />
       <div className="static-overlay" />
       <div className="vignette" />
-      
+
+      <audio ref={audioRef} src="/ICEMAN EP. 3 (ICEMAN SNIPPET).mp3" loop autoPlay />
+
       <div className="content">
         <p className="sub-title">OVO SOUND PRESENTS</p>
         <h1 className="title">AALIYA X ICEMAN</h1>
