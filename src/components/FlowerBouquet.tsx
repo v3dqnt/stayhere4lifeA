@@ -338,7 +338,7 @@ export default function FlowerBouquet({ onClose }: { onClose: () => void }) {
                                 >
                                     Aaliya, there’s something about your beauty that feels almost unreal… not just the way you look, but the way your presence changes everything around you, like the world softens just to match you. Honey, you carry this effortless grace that I can’t quite explain, and sweetu, every time I see you, it feels like I’m witnessing something rare, something I don’t ever want to lose sight of.
                                     <br /><br />
-                                    And somewhere between all those quiet moments and the way you understand me without trying too hard, I’ve realized something simple but overwhelming… I love you.
+                                    And somewhere between all those quiet moments and the way you understand me without trying too hard, I've realized something simple but overwhelming… I absolutely adore you.
                                 </motion.p>
                             </motion.div>
                         )}
