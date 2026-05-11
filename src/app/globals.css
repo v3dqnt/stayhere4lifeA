@@ -255,3 +255,124 @@ main {
   will-change: transform, filter;
   transition: filter 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+/* Maintenance Countdown Styles */
+.maintenance-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  overflow: hidden;
+  background: #000;
+  font-family: var(--sans);
+}
+
+.ice-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/ice-bg.png');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6) contrast(1.1);
+  transform: scale(1.05);
+  animation: slow-zoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+
+.maintenance-container .overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  backdrop-filter: blur(12px);
+}
+
+.maintenance-container .content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 800px;
+  animation: fade-in-up 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.maintenance-container .title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  margin-bottom: 3.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.maintenance-container .sub-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.maintenance-container .countdown {
+  display: flex;
+  gap: clamp(1rem, 4vw, 3rem);
+  justify-content: center;
+  margin-bottom: 4.5rem;
+}
+
+.maintenance-container .time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(60px, 12vw, 120px);
+}
+
+.maintenance-container .value {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 200;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.maintenance-container .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  opacity: 0.4;
+}
+
+.maintenance-container .footer-text {
+  font-size: 1rem;
+  opacity: 0.5;
+  letter-spacing: 0.15em;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+@media (max-width: 600px) {
+  .maintenance-container .countdown {
+    gap: 0.5rem;
+  }
+  .maintenance-container .time-block {
+    min-width: 50px;
+  }
+}

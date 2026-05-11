@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
+import MaintenanceGuard from "@/components/MaintenanceGuard";
 
 export const metadata: Metadata = {
   title: "The Sanctuary | A Gallery for Aaliya",
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ClientWrapper>
-          {children}
-        </ClientWrapper>
+        <MaintenanceGuard>
+          <ClientWrapper>
+            {children}
+          </ClientWrapper>
+        </MaintenanceGuard>
       </body>
     </html>
   );
