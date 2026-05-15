@@ -1092,30 +1092,35 @@ export default function IkaGlobe({ onClose, autoPlay = true }: IkaGlobeProps) {
             </p>
 
             {/* Main quote — the hero */}
-            <p style={{
+            <div style={{
               fontFamily:'var(--serif)', fontStyle:'italic',
-              fontSize:'clamp(2rem, 5vw, 3.8rem)',
+              fontSize:'clamp(0.95rem, 2.2vw, 1.45rem)',
               color:'rgba(255,255,255,0.95)',
-              lineHeight:1.25, letterSpacing:'-0.01em',
+              lineHeight:1.6, letterSpacing:'0.01em',
               textAlign:'center', margin:0,
-              maxWidth:'700px', padding:'0 2rem',
+              maxWidth:'820px', padding:'0 2rem',
               opacity: showLine3 ? 1 : 0,
               transform: showLine3 ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.97)',
               transition:'opacity 2s cubic-bezier(0.16,1,0.3,1), transform 2s cubic-bezier(0.16,1,0.3,1)',
               textShadow:'0 2px 40px rgba(0,0,0,0.8), 0 0 80px rgba(255,255,255,0.05)',
             }}>
-              And somehow, you&rsquo;re the only one I think&nbsp;of.
-            </p>
+              <p style={{ margin: '0 0 1.5rem' }}>
+                Happyyyy birthdayy my babyyy❤️ ❤️ ily sm I can&rsquo;t even express how much I love when you smile and your whole face lights up bitch, thank you for being there for me always watching my back( being my mom🤓) and loving me sm.🥹🥹 Ily sm it hurts 😭 to be not there beside you at these milestones of our lives, but I&rsquo;m just one call away🥹I want you to know I&rsquo;d always be there whatever or whenever you need me💗. Your such an amazing human you deserve all the love my baby😭😭
+              </p>
+              <p style={{ margin: 0 }}>
+                I fucking miss you and I miss fucking you too😭😋. I met you on a random Allen day not knowing you&rsquo;d be such an important part of my life and I cant imagine you gone whatever Tf happens we gotta return babe I can&rsquo;t live without you😭 we&rsquo;ve been through so much, from making jokes in class to actually seeing each other go through shi and the hardest part was going from meeting everyday to being 1000 miles away from you, I fucking ache to hug you imma cry the next time imma see u, thank you mf thank you😭 I so ly and I want you to move ahead in life with vigor and vitality🥹 my strong baby I&rsquo;m so happy to see you fucking smiling after all the shi you deserve it all my bbg💗
+              </p>
+            </div>
 
             {/* Attribution */}
             <p style={{
-              fontFamily:'var(--sans)', fontSize:'0.6rem', letterSpacing:'0.25em',
-              textTransform:'uppercase', color:'rgba(255,255,255,0.2)',
-              marginTop:'2rem',
+              fontFamily:'var(--sans)', fontSize:'0.65rem', letterSpacing:'0.3em',
+              textTransform:'uppercase', color:'rgba(255,255,255,0.35)',
+              marginTop:'2.5rem',
               opacity: showBack ? 1 : 0, transform: showBack ? 'translateY(0)' : 'translateY(10px)',
               transition:'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s',
             }}>
-              — aal
+              — Your annoying lover, Vedika 🥹
             </p>
 
             {/* Thin decorative rule below */}
